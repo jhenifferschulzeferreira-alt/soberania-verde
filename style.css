@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --emerald-50: oklch(97.9% 0.021 166.113);
+    --emerald-100: oklch(95% 0.052 163.051);
+    --emerald-900: oklch(37.8% 0.077 168.94);
+    --emerald-950: oklch(26.2% 0.051 172.552);
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--emerald-50);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Oswald", sans-serif;
+}
+
+section {
+    scroll-margin-top: 50px; /* Cria uma margem de segurança idêntica à altura da nav */
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-950);
+    /* Faz o header ser o ponto de ancoragem para o menu grudar no desktop */
+    position: sticky;
+    top: -100px; /* Esconde a parte do título (que tem 100px) e segura só a nav! */
+    z-index: 999; /* Fica acima de tudo, inclusive da galeria */
+}
+
+#header-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    min-height: 100px;
+}
+
+header img {
+    height: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+header h1 a {
+    color: var(--emerald-50);
+    text-decoration: none;
+}
+
+/* --- ESTILIZAÇÃO DA NAV BAR --- */
+nav {
+    background-color: var(--emerald-950); /* Um tom mais escuro para destacar do resto do header */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center; /* Centraliza as opções de navegação */
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 0;
+}
+
+nav ul li {
+    margin: 0 20px; /* Espaçamento horizontal entre os botões */
+}
+
+nav ul li a {
+    color: var(--emerald-50);
+    text-decoration: none;
+    font-family: "Oswald", sans-serif; /* Mesma fonte imponente dos títulos */
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase; /* Deixa o texto em MAIÚSCULO */
+    letter-spacing: 1px;
+    transition: color 0.2s, border-bottom 0.2s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent; /* Reserva o espaço do efeito de hover */
+}
+
+/* Efeito ao passar o mouse */
+nav ul li a:hover {
+    color: #00adb5; /* Cor de destaque (aquamarine) que você já usa nos botões da lightbox */
+    border-bottom: 2px solid #00adb5;
+}
+
+#hero {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(imgs/plantacao-trator.jpg);
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#hero h2 {
+    flex: 0 0 40%;
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+#hero p {
+    flex: 1;
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
+#accordion_container h2 {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#accordion {
+    background-color: var(--emerald-100);
+    max-width: 1200px;
+    border-radius: 10px;
+    margin: 40px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.accordion-item {
+    flex: 1;
+    border-bottom: 1px solid var(--emerald-900);
+}
+
+.accordion-item h3 {
+    background-color: var(--emerald-900);
+    color: var(--emerald-50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 1.75rem;
+    cursor: pointer;
+}
+
+.accordion-item h3::after{
+    content: '+';
+    font-size: 1.75rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active h3::after{
+    content: '-';
+}
+
+.accordion-item .accordion-content {
+    display: none;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-content {
+    text-align: justify;
+    padding: 20px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+#gallery h2 {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#gallery_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 200px;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- LIGHTBOX STYLES --- */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 75vh;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+}
+
+.lightbox-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-download {
+    background-color: #00adb5;
+    color: white;
+}
+
+.btn-download:hover {
+    background-color: #007a80;
+}
+
+.btn-close {
+    background-color: #ff4444;
+    color: white;
+}
+
+.btn-close:hover {
+    background-color: #cc0000;
+}
+
+/* --- ESTILIZAÇÃO DO SAIBA MAIS --- */
+#more_info {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--emerald-100);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#more_info h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#more_info p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+#more_info ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+#more_info ul li a {
+    color: var(--emerald-900);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+#more_info ul li a:hover {
+    color: var(--emerald-950);
+    text-decoration: underline;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--emerald-900);
+    border-top: 1px solid var(--emerald-950);
+    margin-top: 60px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+footer img {
+    height: 50px;
+}
+
+footer p {
+    color: var(--emerald-50);
+    font-size: 1rem;
+}
+
+.footer-author p {
+    font-family: "Oswald", sans-serif;
+    color: var(--emerald-50);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-author span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   REGRA DE RESPONSIVIDADE FINAL CORRIGIDA (AGORA ADAPTADA PARA FIREFOX)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* CORREÇÃO DO CONFLITO STICKY: Mudamos de static para relative para liberar a nav filha */
+    header {
+        position: relative;
+        top: 0;
+        border-bottom: none;
+        z-index: 10;
+    }
+
+    #header-top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 15px;
+        min-height: 70px;
+        position: relative;
+    }
+
+    header img {
+        height: 45px;
+        position: relative;
+        z-index: 2;
+    }
+
+    header h1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.6rem;
+        text-align: center;
+        width: auto;
+        white-space: nowrap;
+        z-index: 1;
+    }
+
+    /* FORÇADO COMPORTAMENTO STICKY INDEPENDENTE NO MOBILE */
+    nav {
+        position: -webkit-sticky; /* Compatibilidade extra antiga */
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999; /* Valor bem alto para garantir supremacia */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    nav ul {
+        padding: 12px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.95rem;
+    }
+
+    /* 2. Ajuste do Hero */
+    #hero {
+        flex-direction: column;
+        padding: 30px 20px;
+        margin: 20px 15px;
+        gap: 20px;
+        background-position: center;
+    }
+
+    #hero h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    #hero p {
+        font-size: 1.1rem;
+        text-align: justify;
+    }
+
+    /* 3. Ajuste do Accordion */
+    #accordion {
+        flex-direction: column;
+        margin: 20px 15px;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .accordion-item h3 {
+        font-size: 1.4rem;
+        padding: 12px;
+    }
+
+    /* 4. Ajuste da Galeria */
+    #gallery_container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .gallery-item {
+        height: 140px;
+    }
+
+    .lightbox-buttons {
+        flex-direction: column;
+        width: 80%;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 5. Ajuste do Saiba Mais */
+    #more_info {
+        margin: 40px 15px;
+        padding: 20px 15px;
+    }
+
+    #more_info h2 {
+        font-size: 2rem;
+    }
+
+    /* 6. Footer Mobile */
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .footer-brand {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
